@@ -1,4 +1,4 @@
-package Book;
+package Book.IO;
 
 import java.io.FileInputStream;
 import java.io.IOException;

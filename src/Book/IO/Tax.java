@@ -1,4 +1,4 @@
-package Book;
+package Book.IO;
 
 class Tax {
     double grossIncome; // class member variables

@@ -1,4 +1,4 @@
-package Book.tryit;
+package Book.IO.tryit;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
