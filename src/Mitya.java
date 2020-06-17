@@ -11,7 +11,7 @@ public class Mitya {
         System.out.println("Сумма a и b равна: a + b = " + (a+b));
         // Проверка результата
         System.out.println("Проверка результата");
-        if (((a+b)- b) == a)
+        if (((a+b) - b) == a)
             System.out.println("Решение верно");
         else System.out.println("Решение не верно");
         System.out.println();
@@ -21,18 +21,17 @@ public class Mitya {
         System.out.println("Разность a и b равна: a - b = " + (a-b));
         // Проверка результата
         System.out.println("Проверка результата");
-        if (((a-b)+ b) == a)
+        if (((a-b) + b) == a)
             System.out.println("Решение верно");
         else System.out.println("Решение не верно");
         System.out.println();
-
 
         //3. Операция умножения
         System.out.println("3. Операция сложения.");
         System.out.println("Произведение a и b равно: a * b = " + (a*b));
         // Проверка результата
         System.out.println("Проверка результата");
-        if (((a*b)/ b) == a)
+        if (((a*b) / b) == a)
             System.out.println("Решение верно");
         else System.out.println("Решение не верно");
         System.out.println();
@@ -46,7 +45,5 @@ public class Mitya {
             System.out.println("Решение верно");
         else System.out.println("Решение не верно");
         System.out.println();
-
-
     }
 }

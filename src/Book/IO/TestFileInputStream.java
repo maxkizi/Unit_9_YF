@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 public class TestFileInputStream {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
 
 	try (FileInputStream myFile = new FileInputStream("abc.dat")){
 	        
