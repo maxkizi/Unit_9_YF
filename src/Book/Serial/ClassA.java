@@ -8,6 +8,7 @@ class ClassA {
     emp.lName = "John";
     emp.fName = "Smith"; 
     emp.salary = 50000;
+
        
     try (FileOutputStream fOut = new FileOutputStream("BestEmployee.ser");
     	 ObjectOutputStream oOut = new ObjectOutputStream(fOut);){   

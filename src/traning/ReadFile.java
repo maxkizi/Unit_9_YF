@@ -5,6 +5,7 @@ import java.io.*;
 public class ReadFile {
     public static void main(String[] args) {
         StringBuilder string = new StringBuilder();
+
         try(FileInputStream stream1 = new FileInputStream("states.txt");
         InputStreamReader reader1 = new InputStreamReader(stream1, "UTF8");
         BufferedReader br1 = new BufferedReader(reader1))

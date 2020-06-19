@@ -9,13 +9,16 @@ class ClassB {
     	 ObjectInputStream oIn = new ObjectInputStream(fIn);){
     		 
     	 Employee bestEmp=(Employee)oIn.readObject();
-     
-   }catch (ClassNotFoundException cnf){
+    	 System.out.println(bestEmp.fName);
+   }
+
+    catch (ClassNotFoundException cnf){
 	   cnf.printStackTrace();
    } catch (IOException e){
 	 e.printStackTrace();
    }
    
    System.out.println("The Employee  object has been deserialized.");
+
   } 
 }
