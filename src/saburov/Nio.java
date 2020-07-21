@@ -1,37 +1,72 @@
 package saburov;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
+
 import java.nio.ByteBuffer;
+import java.nio.channels.Channel;
 import java.nio.channels.FileChannel;
+
 
 public class Nio {
     public static void main(String[] args) throws Exception{
-        FileInputStream fileIn = new FileInputStream("c:\\Users\\Max\\Desktop\\ujEFZ5ks8MQ.jpg");
-        FileOutputStream fileOut = new FileOutputStream("testNIO");
+        demoChanel();
 
-        FileChannel inChannel = fileIn.getChannel();
-        FileChannel outChanel = fileOut.getChannel();
+    }
+    static void demoChanel(){
+        try(
+                FileInputStream fileIn = new FileInputStream ("D:\\java\\антон сабуров\\лекции\\Потоки ввода-вывода - IO и NIO.mp4");
+                FileOutputStream fileOut = new FileOutputStream("testNio.mp4");
 
-        ByteBuffer inBuff = ByteBuffer.allocate(4096);
-        ByteBuffer outBuff = ByteBuffer.allocate(4096);
+                FileChannel inChannel = fileIn.getChannel();
+                FileChannel outChannel = fileOut.getChannel();
 
 
-        int read = inChannel.read (inBuff);
+        ){
+            ByteBuffer inbound = ByteBuffer.allocate(4096);
+            ByteBuffer outbound = ByteBuffer.allocate(4096);
 
-        while (read != -1){
-            inBuff.flip();
-            while (inBuff.hasRemaining()){
-                byte get = inBuff.get();
-                outBuff.put(get);
-            }
-            outBuff.flip();
-            outChanel.write(outBuff);
-            inBuff.clear();
-            outBuff.clear();
-            read = inChannel.read(inBuff);
+             int toBuffer;
+             //1. Заполняем входной буффер(читаем в буффер)
+             while ((inChannel.read(inbound))!= -1){
+                 //2. "Переворачиваем" входной буффер для чтения из него
+                 inbound.flip();
+                 while (inbound.hasRemaining()){ //пока там что то есть
+                     //3. Вытаскием из входного буффера
+                     byte fromBuffer = inbound.get();
+                     //4. Закидываем в выходной буффер
+                     outbound.put(fromBuffer);
+                 }
+                 //5. "Переворачиваем" выходной буфер
+                 outbound.flip();
+                 //6. пишем в выходной канал
+                 outChannel.write(outbound);
+                 inbound.clear();// не забываем чистить буфер
+                 outbound.clear();
+
+             }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        fileIn.close();
-        fileOut.close();
+
+    }
+    static void demoTransfer () {
+        try (
+                FileInputStream fileIn = new FileInputStream("D:\\java\\антон сабуров\\лекции\\Потоки ввода-вывода - IO и NIO.mp4");
+                FileOutputStream fileOut = new FileOutputStream("testTransfer.mp4");
+
+                FileChannel inChannel = fileIn.getChannel();
+                FileChannel outChannel = fileOut.getChannel();
+        ) {
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
+
